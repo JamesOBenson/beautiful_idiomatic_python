@@ -567,6 +567,33 @@ finally:
 with open('data.txt') as f:
     data = f.read()
 ```
+## How to read and write data structures to a file
+
+```python
+with open('listfile.txt', 'w') as f:
+    for listitem in mylist:
+        filehandle.write('%s\n' % listitem)
+
+mylist = []
+with open('listfile.txt', 'r') as f:
+    for line in f:
+        # remove linebreak which is the last character of the string
+        currentPlace = line[:-1]
+
+        # add item to the list
+        mylist.append(currentPlace)
+```
+
+### Better
+
+```python
+import json
+with open('data.txt', 'w') as f:
+    json.dump(basicList, f)
+    
+with open('data.txt', 'r') as f:
+    basicList = json.load(f)
+```
 
 ## How to use locks
 
